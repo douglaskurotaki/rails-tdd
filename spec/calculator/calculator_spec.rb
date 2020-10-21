@@ -35,4 +35,9 @@ describe Calculator do
   # rspec spec/calculator/calculator_spec.rb -e 'with positive numbers'
   # Testando a linha especificadamente usando o dois pontos ':'
   # rspec spec/calculator/calculator_spec.rb:15
+
+  # Subject implicito -> subject
+  # Podemos usar describles pais, "O mais interno vence (subject)"
+  # Subject explicito -> redefine o nome subject(:calc) { described_class.new() }
+  # Podemos passar um texto pro describle, describle Calculato, "Sobre a calculadora" do
 end
