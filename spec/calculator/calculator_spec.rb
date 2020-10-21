@@ -26,6 +26,27 @@ describe Calculator do
       result = subject.sum(-5, 7)
       expect(result).to eq(2)
     end
+
+    # Teste de excessao divisao por zero
+    # TROCAR () POR {} no expect
+    context '#div' do
+      it 'divide by 0' do
+        # Indica o texto real da excessao
+        expect{subject.div(3, 0)}.to raise_exception
+
+        # Indica a possivel excessao
+        expect{subject.div(3, 0)}.to raise_error(ZeroDivisionError)
+
+        # Indica o texto passado ao dar o erro
+        expect{subject.div(3, 0)}.to raise_error('divided by 0')
+
+        # Indica o tipo da excessao descrevendo com um texto passado
+        expect{subject.div(3, 0)}.to raise_error(ZeroDivisionError, 'divided by 0')
+
+        # Indica que o erro possua uma palavra ou letra indicada como regex
+        expect{subject.div(3, 0)}.to raise_error(/divided/)
+      end
+    end
   end
 
   # Testes devem ser confiaveis, faceis de escrever e nao estar focado em velocidade
