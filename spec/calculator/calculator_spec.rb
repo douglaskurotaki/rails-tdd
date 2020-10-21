@@ -11,6 +11,8 @@ describe Calculator do
       # Subject faz uma instancia da classe automaticamente
       result = subject.sum(5, 7)
       expect(result).to eq(12)
+      # Resultado que não esperamos not_to
+      # expect(result).not_to eq(1)
     end
 
     # Pode usar it, specify ou example
@@ -40,4 +42,6 @@ describe Calculator do
   # Podemos usar describles pais, "O mais interno vence (subject)"
   # Subject explicito -> redefine o nome subject(:calc) { described_class.new() }
   # Podemos passar um texto pro describle, describle Calculato, "Sobre a calculadora" do
+
+  # Matcher são forma de deixar os métodos mais expressivos como expected ou not_expected
 end
