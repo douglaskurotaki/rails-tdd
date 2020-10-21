@@ -14,7 +14,13 @@ describe Calculator do
     end
 
     # Pode usar it, specify ou example
-    it 'wit negative numbers' do      
+    it 'with negative numbers' do
+      result = subject.sum(-5, 7)
+      expect(result).to eq(2)
+    end
+
+    # xit deixa o teste pendente
+    xit 'with negative numbers' do
       result = subject.sum(-5, 7)
       expect(result).to eq(2)
     end
@@ -24,4 +30,9 @@ describe Calculator do
 
   # 4 fases: Setup (preparo do teste). Exercice (exercicio do teste)
   # verify(checagem do valor esperado). Teardown (deixa tudo como estava antes do teste)
+
+  # Podemos especificar o teste no terminal usando:
+  # rspec spec/calculator/calculator_spec.rb -e 'with positive numbers'
+  # Testando a linha especificadamente usando o dois pontos ':'
+  # rspec spec/calculator/calculator_spec.rb:15
 end
