@@ -13,5 +13,8 @@ describe 'Atributos' do
 
     # De forma mais verbosa
     expect(pessoa).to have_attributes(nome: a_string_starting_with('D'), idade: (a_value >= 20))
+
+    # Link para metodos alias
+    # https://gist.github.com/JunichiIto/f603d3fbfcf99b914f86
   end
 end
