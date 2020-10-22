@@ -1,6 +1,7 @@
 require 'calculator'
 
-describe Calculator do
+# Podemos usar o RSpec antes do describe
+RSpec.describe Calculator do
   # Para criar uma instancia com um nome personalizado
   #   subject(:calc) { described_class.new() }
 
