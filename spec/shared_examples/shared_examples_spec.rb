@@ -28,7 +28,8 @@ describe 'Pessoa' do
   # end
 
   # Envia o parametro feliz para o shared_examples referente o 'status'
-  it_behaves_like 'status', :feliz
+  include_examples 'status', :feliz
+  # As duas de baixa mostra o texto de como deve se comportar
   it_behaves_like 'status', :triste
-  it_behaves_like 'status', :contente
+  it_should_behave_like 'status', :contente
 end
