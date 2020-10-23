@@ -2,16 +2,29 @@ require 'pessoa'
 
 describe 'Atributos' do
   before(:each) do
-    puts '>>>> Antes'
-    # Aqui conseguimos antes de iniciar o teste
-    # instanciar a pessoa colocando na variaevel @pessoa
-    @pessoa = Pessoa.new
+    # puts '>>>> Antes'
+    # # Aqui conseguimos antes de iniciar o teste
+    # # instanciar a pessoa colocando na variaevel @pessoa
+    # @pessoa = Pessoa.new
   end
 
   after(:each) do
-    puts '>>>> Depois'
+    # puts '>>>> Depois'
+    # @pessoa.nome = 'Sem nome'
+    # puts ">>>>>>>>>>> #{@pessoa.inspect}"
+  end
+
+  # Com around podemos fazer disparar eventos antes do teste e depois
+  # Parecidos com before e after, mas de uma única forma
+  around(:each) do |teste|
+    puts 'Antes'
+    @pessoa = Pessoa.new
+
+    # Roda o teste
+    teste.run
+
     @pessoa.nome = 'Sem nome'
-    puts ">>>>>>>>>>> #{@pessoa.inspect}"
+    puts "Depois >>>>>>>>>>> #{@pessoa.inspect}"
   end
 
   # Teste com atributos
