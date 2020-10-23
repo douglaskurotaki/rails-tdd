@@ -1,9 +1,14 @@
+RSpec::Matchers.define_negated_matcher :an_array_excluding, :include
+
 describe Array.new([1, 2, 3]), 'Array' do
   # Verifica se contem um elemento ou mais no array
   it '#include' do
     expect(subject).to include(2)
     expect(subject).to include(2, 1)
   end
+
+  # Matcher na negativa, !==
+  it { expect(subject).to an_array_excluding(4) }
 
   # Elementos devem ser exatos, mas nao precisa ser na ordem
   it '#match_array' do
