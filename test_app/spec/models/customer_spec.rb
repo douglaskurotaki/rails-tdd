@@ -16,6 +16,7 @@ RSpec.describe Customer, type: :model do
     # assim criando seu arquivo e sua chamada 'customer' factories/customer.rb
     # Usando aliases para se customer se chamar user
     customer = create(:user)
+    # customer = build(:user)
 
     expect(customer.full_name).to start_with('Sr. ')
   end
@@ -32,5 +33,12 @@ RSpec.describe Customer, type: :model do
   it 'Herança' do
     customer = create(:customer_default)
     expect(customer.vip).to eq(false)
+  end
+
+  # Attr_for eh uma forma de podermos criar uma hash com os dados salvos na factory
+  it 'Usando o attributes_for' do
+    attrs = attributes_for(:customer) # { name: 'fulano', email: 'fulano@gmail.com' }
+    customer = Customer.create(attrs)
+    expect(customer.full_name).to start_with('Sr. ')
   end
 end
