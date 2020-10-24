@@ -27,4 +27,10 @@ RSpec.describe Customer, type: :model do
     customer = create(:user, name: 'Douglas Kurotaki') # name: '' sobreescreve atributo
     expect(customer.full_name).to start_with('Sr. Douglas Kurotaki')
   end
+
+  # Factories aninhados para determinar outros atributos
+  it 'Herança' do
+    customer = create(:customer_default)
+    expect(customer.vip).to eq(false)
+  end
 end
