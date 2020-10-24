@@ -14,11 +14,17 @@ RSpec.describe Customer, type: :model do
 
     # As fabricas servem justamente para termos esses dados de testes
     # assim criando seu arquivo e sua chamada 'customer' factories/customer.rb
-    customer = create(:customer)
+    # Usando aliases para se customer se chamar user
+    customer = create(:user)
 
     expect(customer.full_name).to start_with('Sr. ')
   end
 
   # Verifica se os registros criados e caso sim, mudam pra valor 1
   it { expect{ create(:customer) }.to change { Customer.all.size }.by(1) }
+
+  it 'Sobreescrevendo atributo' do
+    customer = create(:user, name: 'Douglas Kurotaki') # name: '' sobreescreve atributo
+    expect(customer.full_name).to start_with('Sr. Douglas Kurotaki')
+  end
 end
