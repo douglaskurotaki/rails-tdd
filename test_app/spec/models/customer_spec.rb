@@ -5,7 +5,7 @@ RSpec.describe Customer, type: :model do
   # na hora de teste. Deve criar um arquivo chamado aqui em baixo 'customers na pasta fixtures'
   # fixtures :customers # ou insere all ao inves de customers
 
-  it 'Create a Customer' do
+  it '#full_name' do
     # subject.name = 'Douglas Kurotaki'
     # subject.email = 'douglas.kurotaki@gmail.com'
     # subject.save
@@ -16,6 +16,9 @@ RSpec.describe Customer, type: :model do
     # assim criando seu arquivo e sua chamada 'customer' factories/customer.rb
     customer = create(:customer)
 
-    expect(customer.full_name).to eq('Sr. Douglas Kurotaki')
+    expect(customer.full_name).to start_with('Sr. ')
   end
+
+  # Verifica se os registros criados e caso sim, mudam pra valor 1
+  it { expect{ create(:customer) }.to change { Customer.all.size }.by(1) }
 end
