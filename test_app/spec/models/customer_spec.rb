@@ -41,4 +41,11 @@ RSpec.describe Customer, type: :model do
     customer = Customer.create(attrs)
     expect(customer.full_name).to start_with('Sr. ')
   end
+
+  # Serve para criar uma atributo que nao eh usado na criacao, mas que serve
+  # para auxiliar em algum processo
+  it 'Atributo Transitório' do
+    customer = create(:customer_default, upcased: true)
+    expect(customer.name.upcase).to eq(customer.name)
+  end
 end
