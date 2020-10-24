@@ -17,4 +17,16 @@ describe 'Test Double' do
     puts user.name
     puts user.password
   end
+
+  it 'as_null_object' do
+    # declarando as_null_object podemos dispensar metodo que nao existem
+    user = double('User').as_null_object
+    allow(user).to receive(:name).and_return('Jack')
+    allow(user).to receive(:password).and_return('secret')
+    puts user.name
+    puts user.password
+
+    # metodo que nao existe
+    user.abc
+  end
 end
