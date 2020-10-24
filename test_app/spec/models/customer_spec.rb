@@ -73,4 +73,12 @@ RSpec.describe Customer, type: :model do
     expect(customer.gender).to eq('F')
     expect(customer.vip).to eq(false)
   end
+
+  # sequence eh uma forma de ir incrementando algum valor ao criar
+  it 'sequence' do
+    customer = create(:user)
+    puts customer.email
+
+    expect(customer.full_name).to start_with('Sr. ')
+  end
 end
