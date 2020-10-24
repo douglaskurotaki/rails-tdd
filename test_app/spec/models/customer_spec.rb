@@ -48,4 +48,29 @@ RSpec.describe Customer, type: :model do
     customer = create(:customer_default, upcased: true)
     expect(customer.name.upcase).to eq(customer.name)
   end
+
+  # As Traits servem para compor as fabricas, assim nao precisamos colocar mais
+  # de uma fabrica no create. Basta criar as trates igual uma fabrica e depois
+  # criar as fabricas compondo as traits como no customer.rb
+  it 'Cliente Masculino' do
+    customer = create(:customer_male)
+    expect(customer.gender).to eq('M')
+  end
+
+  it 'Cliente Masculino VIP' do
+    customer = create(:customer_male_vip)
+    expect(customer.gender).to eq('M')
+    expect(customer.vip).to eq(true)
+  end
+
+  it 'Cliente Feminino' do
+    customer = create(:customer_female)
+    expect(customer.gender).to eq('F')
+  end
+
+  it 'Cliente Masculino Default' do
+    customer = create(:customer_female_default)
+    expect(customer.gender).to eq('F')
+    expect(customer.vip).to eq(false)
+  end
 end
