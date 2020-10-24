@@ -9,9 +9,9 @@ FactoryBot.define do
     name { Faker::Name.name }
     # email { Faker::Internet.email }
 
-    # sequence(:email) { |n| "meu_email-#{n}@email.com" }
-    sequence(:email, 35) { |n| "meu_email-#{n}@email.com" } # 35 eh o numero que vai inciar
-    sequence(:email, 'a') { |n| "meu_email-#{n}@email.com" } # a eh a letra que vai inciar, depois b,c,d....
+    sequence(:email) { |n| "meu_email-#{n}@email.com" }
+    # sequence(:email, 35) { |n| "meu_email-#{n}@email.com" } # 35 eh o numero que vai inciar
+    # sequence(:email, 'a') { |n| "meu_email-#{n}@email.com" } # a eh a letra que vai inciar, depois b,c,d....
 
     # gender { %w[M F].sample }
 
