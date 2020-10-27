@@ -18,4 +18,12 @@ describe 'HTTParty' do
       expect(content_type).to match(/application\/json/)
     end
   end
+
+  it 'metadados vcr', :vcr do # ou caso nao quiser que o vcr crie uma pasta do describe e referencia a uma especifica
+                              # usamos ao inves do :vcr, o vcr: { cassette_name: 'jsonplaceholder/posts' }
+    response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/2')
+    content_type = response.headers['content-type']
+    puts content_type
+    expect(content_type).to match(/application\/json/)
+  end
 end
