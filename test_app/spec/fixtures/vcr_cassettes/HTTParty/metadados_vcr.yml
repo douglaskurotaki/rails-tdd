@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://jsonplaceholder.typicode.com/posts/2
+    uri: "<API-URL>/posts/2"
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 27 Oct 2020 02:00:36 GMT
+      - Tue, 27 Oct 2020 02:07:49 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -27,8 +27,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d6257100c6529292c6cfbb2ad367736d01603764036; expires=Thu, 26-Nov-20
-        02:00:36 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      - __cfduid=d14daa2ccecda084bb4619164936537961603764469; expires=Thu, 26-Nov-20
+        02:07:49 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
       X-Powered-By:
       - Express
       X-Ratelimit-Limit:
@@ -56,19 +56,19 @@ http_interactions:
       Cf-Cache-Status:
       - HIT
       Age:
-      - '9'
+      - '442'
       Cf-Request-Id:
-      - '06096239e70000d030d5bc7000000001'
+      - '060968d7f50000f744f52b8000000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Report-To:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=SMgRIjIkugoKUhSfswdLYpWH0up%2FJlmWbr5zLoCBSt1LPRrUEWxgVyyn0NJ%2Bx7Iv7zYeRJgvxQm83Vl2ooDE%2BqXenUJhBFekhvzvjW4wYxHlj%2ByyBHyOXqPPDrcf"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=zZJRaBqkoqntBu5pSkF1olU3c0hs9RALlle6GM4p5cdt9OdhJWWMwKIz8Qt5tjP%2BynKSIadcMDaCAdNjyB%2FJihp8TJ5WXIwdkYzVPBHz5SJvUVNN%2FnBnlKMJUr18"}],"group":"cf-nel","max_age":604800}'
       Nel:
       - '{"report_to":"cf-nel","max_age":604800}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 5e88d309791dd030-GRU
+      - 5e88dd9febb3f744-GRU
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -78,5 +78,5 @@ http_interactions:
           "title": "qui est esse",
           "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
         }
-  recorded_at: Tue, 27 Oct 2020 02:00:36 GMT
+  recorded_at: Tue, 27 Oct 2020 02:07:49 GMT
 recorded_with: VCR 6.0.0
