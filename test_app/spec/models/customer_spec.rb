@@ -81,4 +81,13 @@ RSpec.describe Customer, type: :model do
 
     expect(customer.full_name).to start_with('Sr. ')
   end
+
+  # Formas de trabalhar com testes no create_at
+  it 'travel_to' do
+    travel_to Time.zone.local(2004, 11, 23) do
+      @customer = create(:customer_vip)
+    end
+    puts @customer.created_at
+    expect(@customer.created_at).to be < Time.now
+  end
 end
