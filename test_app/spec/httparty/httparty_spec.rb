@@ -35,4 +35,14 @@ describe 'HTTParty' do
     puts content_type
     expect(content_type).to match(/application\/json/)
   end
+
+  # Quando quisermos que a cada requisicao, caso nao haja feito, seja gravado no arquivo
+  # basta usarmos o :record => :new_episodes, para garantir que salve
+  # Recomendado quando haja registros limitados, quando nao for, usar o match_requests_on
+  it 'modos de gravação do VCR', vcr: { cassette_name: 'jsonplaceholder/posts', :record => :new_episodes } do
+    response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/3')
+    content_type = response.headers['content-type']
+    puts content_type
+    expect(content_type).to match(/application\/json/)
+  end
 end
