@@ -26,4 +26,13 @@ describe 'HTTParty' do
     puts content_type
     expect(content_type).to match(/application\/json/)
   end
+
+  # Essa compara a url com o body. Quando fixamos um outro numero fazendo salvar no mesmo arquivo
+  # vai dar erro. E por isso temos que fazer o match_requests_on. Para comparar pelo body
+  it 'url não determinada vcr', vcr: { cassette_name: 'jsonplaceholder/posts', match_requests_on: [:body] } do
+    response = HTTParty.get("https://jsonplaceholder.typicode.com/posts/#{[1, 2, 3, 4, 5].sample}")
+    content_type = response.headers['content-type']
+    puts content_type
+    expect(content_type).to match(/application\/json/)
+  end
 end
