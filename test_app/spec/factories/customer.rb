@@ -4,6 +4,7 @@ FactoryBot.define do
     # atributo transitorio
     transient do
       upcased { false }
+      qtt_orders { 3 }
     end
 
     name { Faker::Name.name }
@@ -33,6 +34,14 @@ FactoryBot.define do
       days_to_pay { 15 }
     end
 
+    # Apos a criacao de um customer e se inserirmos essa trait na chamada
+    # ira criar a quantidade definiada no qtt_orders
+    trait :with_orders do
+      after(:create) do |customer, evaluator|
+        create_list(:order, evaluator.qtt_orders, customer: customer)
+      end
+    end
+
     # indica o nome da fabrica e as traits que seroa usadas
     factory :customer_male, traits: [:male]
     factory :customer_female, traits: [:female]
@@ -42,6 +51,7 @@ FactoryBot.define do
     factory :customer_female_vip, traits: %i[female vip]
     factory :customer_male_default, traits: %i[male default]
     factory :customer_female_default, traits: %i[female default]
+    factory :customer_with_orders, traits: [:with_orders]
 
     # Apos o create podemos usar o evaluator para acessar os valores dos atributos
     # No caso estamos tentando deixar o valor em uppercase se upcased for true
