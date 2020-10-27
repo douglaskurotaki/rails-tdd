@@ -25,7 +25,9 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-
+  # Rodar os testes de forma aleatorio
+  config.order = 'random'
+  
   # FactoryBot lint - quando ocorrer erro, ira demonstrar no terminal de forma clara
   config.before(:suite) do
     FactoryBot.lint
