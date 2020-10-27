@@ -27,4 +27,10 @@ RSpec.describe Order, type: :model do
     puts customer.orders.inspect
     expect(customer.orders.count).to eq(5)
   end
+
+  # Cria somente dois
+  it 'create pair' do
+    orders = create_pair(:order)    
+    expect(orders.count).to eq(2)
+  end
 end
