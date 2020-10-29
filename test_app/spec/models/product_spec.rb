@@ -31,4 +31,19 @@ RSpec.describe Product, type: :model do
     product = create(:product)
     expect(product.full_description).to eq("#{ product.description } - #{ product.price }")
   end
+
+  # Usando o shoulda-matchers para mesma situacoes dos casos acima!
+  # com pouco codigo
+  context 'Validates' do
+    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:price) }
+    it { should validate_presence_of(:category) }
+    # MESMA COISA!
+    it { is_expected.to validate_presence_of(:description) }
+  end
+
+  context 'Associations' do
+    # Belong_to com should
+    it { is_expected.to belong_to(:category) }
+  end
 end
