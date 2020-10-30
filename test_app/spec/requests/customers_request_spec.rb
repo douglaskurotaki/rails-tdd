@@ -63,5 +63,20 @@ RSpec.describe CustomersController, type: :controller do
       post :create, format: :json, params: { customer: customer_params }
       expect(response.content_type).to eq('application/json')
     end
+
+    # Testando se nao for valido
+    it 'with invalid attributes' do
+      # Cria um hash com os dados necessarios para criacao de um novo registro
+      customer_params = attributes_for(:customer, address: nil)
+      sign_in @member
+      expect{ 
+        post :create, params: { customer: customer_params }
+      }.not_to change(Customer, :count)
+    end
+
+    # Verifica a rota
+    it 'Route' do
+      is_expected.to route(:get, '/customers').to(action: :index)
+    end
   end
 end
