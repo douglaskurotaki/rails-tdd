@@ -33,5 +33,19 @@ RSpec.describe CustomersController, type: :controller do
       # Testa o template gerado no controller
       expect(response).to render_template(:show)
     end
+
+    before do 
+      @member = create(:member)
+      @customer = create(:customer)
+    end
+
+    it 'with valid attributes' do
+      # Cria um hash com os dados necessarios para criacao de um novo registro
+      customer_params = attributes_for(:customer)
+      sign_in @member
+      expect{ 
+        post :create, params: { customer: customer_params }
+      }.to change(Customer, :count).by(1) # Verifica se foi adicionado um novo registro
+    end
   end
 end
