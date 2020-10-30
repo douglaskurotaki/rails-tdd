@@ -47,5 +47,13 @@ RSpec.describe CustomersController, type: :controller do
         post :create, params: { customer: customer_params }
       }.to change(Customer, :count).by(1) # Verifica se foi adicionado um novo registro
     end
+
+    # Testando a mensagem apos a criacao do customer
+    it 'Flash Notice' do
+      customer_params = attributes_for(:customer)
+      sign_in @member
+      post :create, params: { customer: customer_params }
+      expect(flash[:notice]).to match(/successfully created/)
+    end
   end
 end
