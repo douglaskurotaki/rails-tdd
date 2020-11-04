@@ -48,6 +48,9 @@ group :development, :test do
   gem 'vcr'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'capybara'
 end
 
 group :development do
