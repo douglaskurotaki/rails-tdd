@@ -14,3 +14,6 @@ gem 'spring-commands-rspec'
   rails generate devise Member   
   rails db:migrate
   rails generate devise:install   
+
+# Utilizando o capybara
+rails generate rspec:feature customers     
