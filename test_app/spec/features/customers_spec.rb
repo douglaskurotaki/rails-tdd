@@ -29,4 +29,11 @@ RSpec.feature "Customers", type: :feature, js: true do
     # Espera uma resposta com o conteudo
     expect(page).to have_content('Customer was successfully created')
   end
+
+  # Esperando requisicao ajax
+  it 'Ajax' do
+    visit(customers_path)
+    click_link('Add Message')
+    expect(page).to have_content('Yes!')
+  end
 end
