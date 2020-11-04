@@ -36,4 +36,11 @@ RSpec.feature "Customers", type: :feature, js: true do
     click_link('Add Message')
     expect(page).to have_content('Yes!')
   end
+
+  # Encontra os elementos html da pagina
+  it 'Find' do
+    visit(customers_path)
+    click_link('Add Message')
+    expect(find('#my-div').find('h1')).to have_content('Yes!')
+  end
 end
