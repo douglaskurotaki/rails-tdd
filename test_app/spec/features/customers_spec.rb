@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../support/new_customer_form'
 
 # Capybara para teste da view
 RSpec.feature "Customers", type: :feature, js: true do
@@ -42,5 +43,17 @@ RSpec.feature "Customers", type: :feature, js: true do
     visit(customers_path)
     click_link('Add Message')
     expect(find('#my-div').find('h1')).to have_content('Yes!')
+  end
+
+  it 'Creates a Customer - Page Object Pattern' do
+    # Forma mais clean de se usar os testes
+    new_customer_form = NewCustomerForm.new
+    new_customer_form.login.visit_page.fill_in_with(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      address: Faker::Address.street_address
+    ).submit
+
+    expect(page).to have_content('Customer was successfully created')
   end
 end
