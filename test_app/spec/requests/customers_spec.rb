@@ -35,5 +35,19 @@ RSpec.describe "Customers", type: :request do
         ]
       )
     end
+
+    it 'create - JSON' do
+      member = create(:member)
+      login_as(member, scope: :member)
+      headers = { 'ACEPT' => 'application/json' }
+      customers_params = attributes_for(:customer)
+      post '/customers.json', params: { customer: customers_params }, headers: headers
+      expect(response.body).to include_json(
+          id: /\d/,
+          name: customers_params[:name],
+          email: customers_params.fetch(:email) # fetch eh a msm coisa do de cima, porem retorna o erro direito caso tiver
+          # address: customers_params.fetch(:address).fetch(:street) para casos aninhados
+      )
+    end
   end
 end
