@@ -24,5 +24,16 @@ RSpec.describe "Customers", type: :request do
           id: 1
       )
     end
+
+    it "index/genérico - JSON 200 ok" do
+      get '/customers.json'
+      expect(response.body).to include_json(
+        [
+          id: /\d/,
+          name: (be_kind_of String),
+          email: (be_kind_of String),
+        ]
+      )
+    end
   end
 end
