@@ -64,5 +64,15 @@ RSpec.describe "Customers", type: :request do
           email: customer.email
       )
     end
+
+    it 'destroy - JSON' do
+      member = create(:member)
+      login_as(member, scope: :member)
+      headers = { 'ACEPT' => 'application/json' }
+      customer = Customer.first
+      # Deve usar o customer.attributes para transformar os atributos em parametros
+      expect { delete "/customers/#{customer.id}.json", headers: headers }.to change(Customer, :count).by(-1)
+      expect(response).to have_http_status(204)
+    end
   end
 end
