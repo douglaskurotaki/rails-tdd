@@ -74,5 +74,13 @@ RSpec.describe "Customers", type: :request do
       expect { delete "/customers/#{customer.id}.json", headers: headers }.to change(Customer, :count).by(-1)
       expect(response).to have_http_status(204)
     end
+
+    it "show - RSPEC puro" do
+      get '/customers/1.json'
+      response_body = JSON.parse(response.body)
+      expect(response_body.fetch('id')).to eq(1)
+      expect(response_body.fetch('name')).to be_kind_of(String)
+      expect(response_body.fetch('email')).to be_kind_of(String)
+    end
   end
 end
